@@ -1,15 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { IconComponentProvider} from "@react-native-material/core";
-import {StackNavigator} from "./components/navigator/StackNavigator";
+import {Navigator} from "./components/navigator/Navigator";
+import {PaperProvider} from "react-native-paper";
 
 export default function App() {
     return (
-        <IconComponentProvider IconComponent={MaterialCommunityIcons}>
+        <PaperProvider>
             <NavigationContainer>
-                <StackNavigator/>
+                <Navigator/>
             </NavigationContainer>
-        </IconComponentProvider>
+        </PaperProvider>
   );
 }
 

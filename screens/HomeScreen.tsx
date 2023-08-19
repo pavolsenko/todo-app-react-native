@@ -1,21 +1,27 @@
-import { Text } from "react-native";
-import {Button} from "@react-native-material/core";
+import {Text, useColorScheme, View} from "react-native";
 import {useEffect, useState} from "react";
+import {Button} from "react-native-paper";
 
 export function HomeScreen({navigation}) {
+    const colorScheme = useColorScheme();
+
     const [count, setCount] = useState(0);
 
     useEffect(() => {
         navigation.setOptions({
             headerRight: () => (
-                <Button onPress={() => setCount((c) => c + 1)} title="Update count" />
+                <Button onPress={() => setCount((c) => c + 1)}>Update count</Button>
             ),
         });
     }, [navigation]);
 
-    return (<><Text>Count: {count}</Text>
-        <Button
-            title="Go to Details"
-            onPress={() => navigation.navigate('Details')}
-        /></>);
+    return (
+        <View>
+            <Text>Count: {count}</Text>
+            <Button onPress={() => navigation.navigate('Details')} buttonColor="primary">
+                Test button to Details
+            </Button>
+            <Text>{colorScheme}</Text>
+        </View>
+    );
 }
